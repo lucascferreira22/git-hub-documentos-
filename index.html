@@ -43,6 +43,20 @@
         header {
             text-align: center;
             margin-bottom: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Estilo para deixar sua foto redonda e alinhada */
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--accent-color);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(88, 166, 255, 0.3);
         }
 
         header h1 {
@@ -189,6 +203,14 @@
             color: var(--text-color);
             font-size: 0.95rem;
             text-align: justify;
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 0.95rem;
         }
 
         /* Seção de Contato */
@@ -246,6 +268,7 @@
     <div class="container">
         
         <header>
+            <img src="https://raw.githubusercontent.com/lucascferreira22/git-hub-documentos-/main/image.png" alt="Foto de Lucas Chagas Ferreira" class="profile-photo" onerror="this.src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=300&q=80'">
             <h1>Lucas Chagas Ferreira</h1>
             <div class="subtitle">Estudante de Análise e Desenvolvimento de Sistemas</div>
         </header>
@@ -309,6 +332,19 @@
                 <p>Realizei uma participação na Olimpíada Brasileira de Astronomia e Astronautica (OBA) e Mostra Brasileira de Foguetes (MOBFOG), participação essa oferecida pela minha escola de formação, onde pude enriquecer meus conhecimentos em ciências, raciocínio lógico e projetos práticos envolvendo engenharia. Mesmo realizada a um considerável tempo guardo grandes recordações e competências construídas de lá.</p>
             </div>
 
+            <div class="project-card">
+                <h3>Modelagem e Queries de Banco de Dados</h3>
+                <p>Desenvolvimento de estruturas de tabelas, relacionamentos e consultas SQL criadas para cenários práticos e acadêmicos.</p>
+                <a href="https://salaonline.ceub.br/pluginfile.php/270903/assignsubmission_file/submission_files/361067/TAB-ALUNO3-PG.SQL?forcedownload=1" target="_blank" class="project-link">Script PostgreSQL &rarr;</a><br>
+                <a href="https://salaonline.ceub.br/pluginfile.php/270917/assignsubmission_file/submission_files/361305/TAB-ALUNO-MS.SQL?forcedownload=1" target="_blank" class="project-link" style="margin-top: 5px;">Script MySQL Workbench &rarr;</a>
+            </div>
+
+            <div class="project-card">
+                <h3>Algoritmos e Web API com C#</h3>
+                <p>Documentação contendo soluções lógicas estruturadas e implementação de APIs analíticas e manipulação de dados utilizando C#.</p>
+                <a href="https://docs.google.com/document/d/1v9avelNhVsMvE1qslcmCo0IOo0p44W0uuscCseHU5yc/edit?usp=drivesdk" target="_blank" class="project-link">Ver Documentação do Projeto &rarr;</a>
+            </div>
+
         </div>
 
         <section class="contact-section">
@@ -327,15 +363,12 @@
 
     <script>
         function openTab(tabId, button) {
-            // Esconde todos os conteúdos das abas
             const contents = document.querySelectorAll('.tab-content');
             contents.forEach(content => content.classList.remove('active'));
 
-            // Remove a classe 'active' de todos os botões
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
 
-            // Mostra o conteúdo da aba selecionada e ativa o botão clicado
             document.getElementById(tabId).classList.add('active');
             button.classList.add('active');
         }
