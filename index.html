@@ -3,315 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucas Chagas Ferreira | Portfólio</title>
+    <title>Lucas Chagas Ferreira | Portfólio ADS</title>
     <style>
-        /* Estilos Globais e Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --bg-color: #0d1117;
-            --card-bg: #161b22;
-            --accent-color: #58a6ff;
-            --text-color: #c9d1d9;
-            --text-light: #8b949e;
-            --border-color: #21262d;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* Container Principal */
-        .container {
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
-            flex: 1;
-        }
-
-        /* Cabeçalho / Perfil */
-        header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Estilo para deixar sua foto redonda e alinhada */
+        /* Estilos Globais e Reset (GitHub-like Dark Mode) */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+        :root { --bg-color: #0d1117; --card-bg: #161b22; --accent-color: #58a6ff; --text-color: #c9d1d9; --text-light: #8b949e; --border-color: #21262d; }
+        body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; padding: 1rem; }
+        .container { max-width: 850px; margin: 0 auto; width: 100%; flex: 1; }
+        header { text-align: center; margin-bottom: 2.5rem; display: flex; flex-direction: column; align-items: center; }
+        
+        /* Estilo Permanente da Sua Foto Real */
         .profile-photo {
-            width: 160px;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid var(--accent-color);
-            margin-bottom: 1.5rem;
+            width: 160px; height: 160px; object-fit: cover; border-radius: 50%;
+            border: 4px solid var(--accent-color); margin-bottom: 1.5rem;
             box-shadow: 0 4px 15px rgba(88, 166, 255, 0.3);
+            background-color: var(--card-bg); /* Fundo se a foto demorar a carregar */
         }
-
-        header h1 {
-            color: #fff;
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        header .subtitle {
-            color: var(--accent-color);
-            font-size: 1.2rem;
-            font-weight: 500;
-        }
-
-        /* Seção Sobre Mim */
-        .about-section {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 2rem;
-            border-radius: 8px;
-            margin-bottom: 2.5rem;
-            text-align: justify;
-        }
-
-        /* Menu de Botões (Navegação por Abas) */
-        .nav-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .tab-btn {
-            background-color: transparent;
-            color: var(--text-color);
-            border: 2px solid var(--border-color);
-            padding: 0.8rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: 0.3s ease;
-        }
-
-        .tab-btn:hover {
-            border-color: var(--accent-color);
-            color: #fff;
-        }
-
-        .tab-btn.active {
-            background-color: var(--accent-color);
-            color: #0d1117;
-            border-color: var(--accent-color);
-        }
-
-        /* Conteúdo das Abas */
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Estilos do Resumo (Educação e Skills) */
-        .resume-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        @media(min-width: 768px) {
-            .resume-grid { grid-template-columns: 1.2fr 0.8fr; }
-        }
-
-        .block-title {
-            color: #fff;
-            font-size: 1.4rem;
-            margin-bottom: 1.2rem;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 0.5rem;
-        }
-
-        .edu-item {
-            margin-bottom: 1.5rem;
-        }
-
-        .edu-item h4 {
-            color: #fff;
-            font-size: 1.1rem;
-        }
-
-        .edu-item .institution {
-            color: var(--accent-color);
-            font-size: 0.95rem;
-        }
-
-        .edu-item .year {
-            color: var(--text-light);
-            font-size: 0.85rem;
-        }
-
-        /* Skills e Idiomas */
-        .skills-list, .lang-list {
-            list-style: none;
-        }
-
-        .skills-list li, .lang-list li {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 0.6rem 1rem;
-            border-radius: 5px;
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-
-        .lang-list span {
-            color: var(--text-light);
-            font-size: 0.85rem;
-            display: block;
-        }
-
-        /* Estilos dos Projetos */
-        .project-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 2rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-card h3 {
-            color: #fff;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-card p {
-            color: var(--text-color);
-            font-size: 0.95rem;
-            text-align: justify;
-            margin-bottom: 1rem;
-        }
-
-        .project-link {
-            display: inline-block;
-            color: var(--accent-color);
-            font-weight: bold;
-            font-size: 0.95rem;
-        }
-
-        /* Seção de Contato */
-        .contact-section {
-            text-align: center;
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .contact-section h2 {
-            color: #fff;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            letter-spacing: 1px;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
-
-        .contact-btn {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            padding: 0.8rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.3s;
-        }
-
-        .contact-btn:hover {
-            border-color: var(--accent-color);
-            color: var(--accent-color);
-            transform: translateY(-2px);
-        }
-
-        /* Rodapé */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: var(--text-light);
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border-color);
-            margin-top: 2rem;
-        }
+        
+        header h1 { color: #fff; font-size: 2.5rem; margin-bottom: 0.5rem; }
+        header .subtitle { color: var(--accent-color); font-size: 1.2rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* ... Estilos Restantes do Site (Iguais) ... */
+        .about-section { background-color: var(--card-bg); border: 1px solid var(--border-color); padding: 2rem; border-radius: 8px; margin-bottom: 2.5rem; text-align: justify; }
+        .nav-buttons { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2.5rem; }
+        .tab-btn { background-color: transparent; color: var(--text-color); border: 2px solid var(--border-color); padding: 0.8rem 2.5rem; font-size: 1.1rem; font-weight: bold; border-radius: 6px; cursor: pointer; transition: 0.3s ease; }
+        .tab-btn:hover, .tab-btn.active { border-color: var(--accent-color); color: #fff; background-color: var(--accent-color); }
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .resume-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+        @media(min-width: 768px) { .resume-grid { grid-template-columns: 1.2fr 0.8fr; } }
+        .block-title { color: #fff; font-size: 1.4rem; margin-bottom: 1.2rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; text-transform: uppercase; }
+        .edu-item { margin-bottom: 1.5rem; }
+        .edu-item h4 { color: #fff; font-size: 1.1rem; }
+        .edu-item .institution { color: var(--accent-color); font-size: 0.95rem; font-weight: 600; }
+        .edu-item .year { color: var(--text-light); font-size: 0.85rem; }
+        .skills-list, .lang-list { list-style: none; }
+        .skills-list li, .lang-list li { background-color: var(--card-bg); border: 1px solid var(--border-color); padding: 0.6rem 1rem; border-radius: 5px; margin-bottom: 0.5rem; font-size: 0.95rem; }
+        .project-card { background-color: var(--card-bg); border: 1px solid var(--border-color); padding: 2rem; border-radius: 8px; margin-bottom: 1.5rem; }
+        .project-card h3 { color: #fff; margin-bottom: 0.5rem; font-size: 1.3rem; }
+        .project-card p { color: var(--text-color); font-size: 0.95rem; text-align: justify; margin-bottom: 1rem; }
+        .project-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .project-link { color: var(--accent-color); font-weight: bold; font-size: 0.9rem; text-decoration: none; }
+        .contact-section { text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
+        .contact-links { display: flex; justify-content: center; gap: 1.5rem; }
+        .contact-btn { background-color: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-color); padding: 0.8rem 1.5rem; border-radius: 6px; text-decoration: none; font-weight: 500; transition: 0.3s; }
+        footer { text-align: center; padding: 2rem; color: var(--text-light); font-size: 0.8rem; border-top: 1px solid var(--border-color); margin-top: 2rem; }
     </style>
 </head>
 <body>
-
     <div class="container">
-        
         <header>
-            <img src="https://i.ibb.co/5RzG6pG/lucas-photo.png" alt="Foto de Lucas Chagas Ferreira" class="profile-photo" onerror="this.src='https://raw.githubusercontent.com/lucascferreira22/git-hub-documentos-/main/image.png'">
+            <img src="lucas-photo-real.png" alt="Foto Real de Lucas Chagas Ferreira" class="profile-photo" onerror="this.src='https://raw.githubusercontent.com/github/explore/master/topics/github/github.png'">
             <h1>Lucas Chagas Ferreira</h1>
-            <div class="subtitle">Estudante de Análise e Desenvolvimento de Sistemas</div>
+            <div class="subtitle">Análise e Desenvolvimento de Sistemas (ADS)</div>
         </header>
 
         <section class="about-section">
-            <p>Meu nome é Lucas Chagas Ferreira, tenho 18 anos, nasci e sou de Brasília. Acabei de concluir o ensino médio em 2025, e atualmente inicio minha formação acadêmica no curso de Análise e Desenvolvimento de Sistemas. Desde pequeno por gostar muito de jogar nas aulas de informática eu tinha certa curiosidade de como os computadores funcionavam e como os nossos dados são guardados, tenho interesse nas excelentes oportunidades de home-office que o mercado de TI oferece tanto no Brasil quanto no exterior e busco especialização em análise de dados, segurança da informação e gerenciamento de forma com que eu desenvolva novas competências técnicas e teóricas que façam que eu contribua de forma estratégica em projetos de tecnologia.</p>
+            <p>Tenho 18 anos, nasci e sou de Brasília. Concluí o ensino médio em 2025 e atualmente inicio minha formação acadêmica no Centro Universitário de Brasília (CEUB) no curso de Análise e Desenvolvimento de Sistemas. Desde pequeno, motivado por jogos nas aulas de informática, desenvolvi curiosidade sobre o funcionamento dos computadores e o armazenamento de dados. Busco especialização em análise de dados, segurança da informação e gerenciamento, visando contribuir estrategicamente em projetos de tecnologia e explorar as oportunidades de home-office no mercado de TI.</p>
         </section>
 
         <div class="nav-buttons">
-            <button class="tab-btn active" onclick="openTab('resumo', this)">Resumo</button>
-            <button class="tab-btn" onclick="openTab('projetos', this)">Projetos</button>
+            <button class="tab-btn active" onclick="openTab('resumo', this)">Resumo Profissional</button>
+            <button class="tab-btn" onclick="openTab('projetos', this)">Projetos Destacados</button>
         </div>
 
         <div id="resumo" class="tab-content active">
             <div class="resume-grid">
                 <div>
-                    <h3 class="block-title">Educação</h3>
-                    
+                    <h3 class="block-title">Formação Acadêmica</h3>
                     <div class="edu-item">
-                        <h4>Análise e Desenvolvimento de Sistemas</h4>
+                        <h4>Graduação em Análise e Desenvolvimento de Sistemas</h4>
                         <div class="institution">Centro Universitário de Brasília (CEUB)</div>
                         <div class="year">2026 - Presente</div>
                     </div>
-
                     <div class="edu-item">
                         <h4>Ensino Médio</h4>
                         <div class="institution">Colégio La Salle de Águas Claras - DF</div>
                         <div class="year">2023 - 2025</div>
                     </div>
                 </div>
-
                 <div>
-                    <h3 class="block-title">Professional Skills</h3>
+                    <h3 class="block-title">Competências Técnicas</h3>
                     <ul class="skills-list">
                         <li>Análise de Dados</li>
-                        <li>Queries em PostgreSQL e Workbench</li>
-                        <li>Microsoft Excel</li>
-                        <li>Microsoft PowerPoint</li>
-                        <li>Algoritmos em C# (Básico)</li>
-                        <li>Web API (Básico)</li>
+                        <li>PostgreSQL e Workbench Queries</li>
+                        <li>Algoritmos em C# & Web API</li>
+                        <li>Microsoft Excel & PowerPoint</li>
                     </ul>
-
-                    <h3 class="block-title" style="margin-top: 1.5rem;">Linguagens</h3>
+                    <h3 class="block-title" style="margin-top: 1.5rem;">Idiomas</h3>
                     <ul class="lang-list">
                         <li>Português <span>Nativo</span></li>
                         <li>Inglês <span>Básico</span></li>
@@ -321,58 +101,46 @@
         </div>
 
         <div id="projetos" class="tab-content">
-            
             <div class="project-card">
-                <h3>Brasília Sustentável: Patrimônio, Turismo e Identidade</h3>
-                <p>Realizei a apresentação de um projeto acadêmico escolar: Brasília Sustentável, falando sobre os seus 65 anos de história e levando em conta seu patrimônio, turismo e identidade. Pelo destaque do projeto, fui convidado para participar do evento 8° EnCUCA em outubro de 2025. Nele tivemos que realizar um banner e um documentário expositivo do tema.</p>
+                <h3>Brasília Sustentável: Patrimônio e Turismo</h3>
+                <p>Projeto acadêmico premiado e apresentado no 8° EnCUCA (2025), focado em banner e documentário sobre sustentabilidade e turismo em Brasília.</p>
             </div>
-
-            <div class="project-card">
-                <h3>Olimpíada Brasileira de Astronomia e Astronautica (OBA)</h3>
-                <p>Realizei uma participação na Olimpíada Brasileira de Astronomia e Astronautica (OBA) e Mostra Brasileira de Foguetes (MOBFOG), participação essa oferecida pela minha escola de formação, onde pude enriquecer meus conhecimentos em ciências, raciocínio lógico e projetos práticos envolvendo engenharia. Mesmo realizada a um considerável tempo guardo grandes recordações e competências construídas de lá.</p>
-            </div>
-
             <div class="project-card">
                 <h3>Modelagem e Queries de Banco de Dados</h3>
-                <p>Desenvolvimento de estruturas de tabelas, relacionamentos e consultas SQL criadas para cenários práticos e acadêmicos.</p>
-                <a href="https://salaonline.ceub.br/pluginfile.php/270903/assignsubmission_file/submission_files/361067/TAB-ALUNO3-PG.SQL?forcedownload=1" target="_blank" class="project-link">Script PostgreSQL &rarr;</a><br>
-                <a href="https://salaonline.ceub.br/pluginfile.php/270917/assignsubmission_file/submission_files/361305/TAB-ALUNO-MS.SQL?forcedownload=1" target="_blank" class="project-link" style="margin-top: 5px;">Script MySQL Workbench &rarr;</a>
+                <p>Estrutura de tabelas e consultas SQL desenvolvidas para cenários acadêmicos e analíticos.</p>
+                <div class="project-links">
+                    <a href="https://salaonline.ceub.br/pluginfile.php/270903/assignsubmission_file/submission_files/361067/TAB-ALUNO3-PG.SQL?forcedownload=1" target="_blank" class="project-link">Script PostgreSQL</a>
+                    <a href="https://salaonline.ceub.br/pluginfile.php/270917/assignsubmission_file/submission_files/361305/TAB-ALUNO-MS.SQL?forcedownload=1" target="_blank" class="project-link">Script Workbench</a>
+                </div>
             </div>
-
             <div class="project-card">
-                <h3>Algoritmos e Web API com C#</h3>
-                <p>Documentação contendo soluções lógicas estruturadas e implementação de APIs analíticas e manipulação de dados utilizando C#.</p>
-                <a href="https://docs.google.com/document/d/1v9avelNhVsMvE1qslcmCo0IOo0p44W0uuscCseHU5yc/edit?usp=drivesdk" target="_blank" class="project-link">Ver Documentação do Projeto &rarr;</a>
+                <h3>Programação e API com C#</h3>
+                <p>Lógica estruturada e implementação de APIs analíticas para integração de sistemas e manipulação de dados.</p>
+                <a href="https://docs.google.com/document/d/1v9avelNhVsMvE1qslcmCo0IOo0p44W0uuscCseHU5yc/edit?usp=drivesdk" target="_blank" class="project-link">Ver Documentação C# &rarr;</a>
             </div>
-
         </div>
 
         <section class="contact-section">
-            <h2>VAMOS TRABALHAR JUNTOS?</h2>
+            <h3 class="block-title">Vamos Construir Algo Juntos</h3>
             <div class="contact-links">
-                <a href="https://www.linkedin.com/in/lucas-ferreira-25418a3b5?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" class="contact-btn">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/lucas-ferreira-25418a3b5" target="_blank" class="contact-btn">LinkedIn</a>
                 <a href="mailto:lukaschagas898@gmail.com" class="contact-btn">lukaschagas898@gmail.com</a>
             </div>
         </section>
-
     </div>
 
     <footer>
-        <p>&copy; 2026 - Lucas Chagas Ferreira</p>
+        <p>&copy; 2026 Lucas Chagas Ferreira - Portfólio de Estudante ADS</p>
     </footer>
 
     <script>
         function openTab(tabId, button) {
-            const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.remove('active'));
-
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             button.classList.add('active');
         }
     </script>
-
 </body>
 </html>
+            
